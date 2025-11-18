@@ -5,7 +5,7 @@ import {useState} from "react";
 
 export default function LinkPreview({link}:{link:LinkProps}) {
     const [copied, setCopied] = useState(false);
-    const shortUrl =`${window.location.origin}/${link.alias}`;
+    const shortUrl = `${typeof window !== "undefined" ? window.location.origin : ""}/${link.alias}`;
 
     const handleCopy = async () => {
         await navigator.clipboard.writeText(shortUrl);
