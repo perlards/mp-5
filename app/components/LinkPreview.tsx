@@ -1,3 +1,4 @@
+"use client";
 import { LinkProps } from "@/types/LinkProps"
 import Link from "next/link"
 import {useState} from "react";
