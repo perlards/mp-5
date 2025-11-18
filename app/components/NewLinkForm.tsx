@@ -19,11 +19,14 @@ export default function NewLinkForm({append}:{append: (post: LinkProps) => void}
                   {
                       event.preventDefault();
                       setError("");
+                      setNewLink(null);
+
                       createNewLink(url,alias)
                           .then((link) => { append(link);
                           setNewLink(link); })
-                          .catch((e)=> console.log("this error occurred: "+ e));
+                          .catch((e)=> {console.log("this error occurred: "+ e);
                               setError("Duplicate alias, pick a new name.");
+                          });
                   }
 
               }>
