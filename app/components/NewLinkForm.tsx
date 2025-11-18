@@ -10,6 +10,7 @@ export default function NewLinkForm({append}:{append: (post: LinkProps) => void}
     const [alias, setAlias] = useState("");
     const [url, setUrl] = useState("");
     const [newLink, setNewLink] = useState<LinkProps | null>(null);
+    const [error, setError] = useState<string>("");
 
     return (
         <form className="w-96 rounded-xl p-4 bg-pink-800-400"
@@ -17,10 +18,12 @@ export default function NewLinkForm({append}:{append: (post: LinkProps) => void}
                   async(event) =>
                   {
                       event.preventDefault();
+                      setError("");
                       createNewLink(url,alias)
                           .then((link) => { append(link);
                           setNewLink(link); })
                           .catch((e)=> console.log("this error occurred: "+ e));
+                              setError("Duplicate alias, pick a new name.");
                   }
 
               }>
@@ -58,6 +61,8 @@ export default function NewLinkForm({append}:{append: (post: LinkProps) => void}
                     shorten
                 </Button>
             </div>
+            {error && <p className="text-red-600 mt-2">{error}</p>}
+
             {newLink && <LinkPreview link={newLink} />}
         </form>
     );
