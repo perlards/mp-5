@@ -13,6 +13,8 @@ export default async function createNewLink(
         url,
     };
     const linkCollection = await getCollection(LINKS_COLLECTION);
+
+
     const res = await linkCollection.insertOne({...newLink});
 
     if (!res.acknowledged) {

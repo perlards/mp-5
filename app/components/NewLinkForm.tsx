@@ -66,7 +66,7 @@ export default function NewLinkForm({append}:{append: (post: LinkProps) => void}
             </div>
             {error && <p className="text-red-600 mt-2">{error}</p>}
 
-            {newLink && <LinkPreview link={newLink} />}
+
         </form>
     );
 }
