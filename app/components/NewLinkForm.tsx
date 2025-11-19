@@ -21,6 +21,10 @@ export default function NewLinkForm({append}:{append: (post: LinkProps) => void}
                       setError("");
                       setNewLink(null);
 
+                      if (encodeURIComponent(alias) !== alias) {
+                          setError("Invalid alias: You may only use valid URL characters");
+                          return;
+                      }
                       createNewLink(url,alias)
                           .then((link) => { append(link);
                           setNewLink(link); })
