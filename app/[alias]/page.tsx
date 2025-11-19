@@ -7,8 +7,6 @@ export default async function RedirectPage({
     params: Promise<{ alias: string }>
 }){
     const{alias} = await params;
-
-
     const link = await getLinkByAlias(alias);
     if(!link) {
         redirect("/");
